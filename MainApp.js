@@ -73,6 +73,7 @@ client.on('message', async message => {
         for(let i = 2; i < content_arr.length; i++){
             arr_of_buttons_body.push(content_arr[i]);
             console.log(content_arr[i]);
+            
         } 
         console.log(arr_of_buttons_body);
         let container = {
