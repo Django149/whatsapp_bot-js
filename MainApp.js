@@ -63,21 +63,24 @@ client.on('message', async message => {
         let button;
         let jsonfile = JSON.parse(fs.readFileSync("./buttons.json"));
         let content = message.body.slice(7);
+        console.log(content);
         let content_arr = content.split("-");
+        console.log(content_arr);
         let title = content_arr[0];
+        console.log(title);
         let discription = content_arr[1];
         let arr_of_buttons_body = [];
-        for(let i = 2; i < arr_of_buttons_body.length; i++){
-            arr_of_buttons_body.append(content_arr[i]);
+        for(let i = 2; i < content_arr.length; i++){
+            arr_of_buttons_body.push(content_arr[i]);
+            console.log(content_arr[i]);
         } 
-        console.log(jsonfile);
-        console.log(JSON.stringify(jsonfile));
+        console.log(arr_of_buttons_body);
         let container = {
             "title": title,
             "discription": discription,
             "arr_of_buttons_body": arr_of_buttons_body
         };
-        //jsonfile.append(container);
+        jsonfile.push(container);
         fs.writeFile("./buttons.json", JSON.stringify(jsonfile, null, 2), err => {
             if(err){
                 console.log(err);
